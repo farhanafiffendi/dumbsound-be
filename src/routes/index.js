@@ -18,6 +18,7 @@ router.post('/register', register)
 router.post('/login', login)
 router.get('/check', auth, checkLogin)
 
+//route music
 router.get('/musics', auth, getMusics)
 router.patch('/music/:id', auth, uploadFile('attache', 'thumbnail'), updateMusic)
 router.post('/music', auth, uploadFile('attache', 'thumbnail'), addMusics)
