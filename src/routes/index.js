@@ -6,7 +6,7 @@ const router = express.Router()
 const { register, login, checkLogin } = require('../controllers/auth')
 const { getMusics, addMusics, updateMusic, getDetailMusic, deleteMusic } = require('../controllers/music')
 const { addArtist, updateArtist, getArtist, deleteArtist } = require('../controllers/artist')
-const { getTransaction, addTransaction } = require('../controllers/transaction')
+const { getTransaction, addTransaction, notification } = require('../controllers/transaction')
 
 // Middleware
 const { auth } = require('../middlewares/auth')
@@ -32,5 +32,6 @@ router.delete('/artist/:id', auth, deleteArtist)
 
 router.get('/transactions', auth, getTransaction)
 router.post('/transaction', auth, addTransaction)
+router.post("/notification", notification);
 
 module.exports = router
