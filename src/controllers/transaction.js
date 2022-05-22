@@ -45,9 +45,7 @@ exports.getTransaction = async (req, res) => {
         res.send({
             status: 'success',
             message: 'User Successfully Get',
-            data: {
-                transactions
-            }
+            transactions,
         })
     } catch (error) {
         console.log(error)

@@ -3,14 +3,15 @@ const { music, art } = require('../../models');
 exports.getMusics = async (req, res) => {
     try {
         let data = await music.findAll({
-            include:
-            {
-                model: art,
-                as: 'art',
-                attributes: {
-                    exclude: ['createdAt', 'updatedAt'],
-                },
-            },
+            include: [
+                {
+                    model: art,
+                    as: 'art',
+                    attributes: {
+                        exclude: ['createdAt', 'updatedAt'],
+                    },
+                }
+            ],
             attributes: {
                 exclude: ['createdAt', 'updatedAt']
             },
@@ -30,9 +31,8 @@ exports.getMusics = async (req, res) => {
         res.send({
             status: "success",
             messsage: "successfully get music",
-            data: {
-                data
-            }
+            data,
+
         })
     } catch (error) {
         console.log(error);
