@@ -14,6 +14,7 @@ exports.addTransaction = async (req, res) => {
             ...data,
             userId: req.user.id,
             status: "pending",
+            price: parseInt("20000")
         };
 
         const newData = await transaction.create(data);
@@ -38,6 +39,7 @@ exports.addTransaction = async (req, res) => {
         let parameter = {
             transaction_details: {
                 order_id: newData.id,
+                gross_amount: newData.price,
             },
             credit_card: {
                 secure: true,
@@ -110,7 +112,7 @@ exports.notification = async (req, res) => {
                 // TODO set transaction status on your database to 'success'
                 // and response with 200 OK
                 // sendEmail("success", orderId); //sendEmail with status success and order id
-                updateProduct(orderId);
+                // updateProduct(orderId);
                 updateTransaction("success", orderId);
                 res.status(200);
             }
@@ -118,7 +120,7 @@ exports.notification = async (req, res) => {
             // TODO set transaction status on your database to 'success'
             // and response with 200 OK
             // sendEmail("success", orderId); //sendEmail with status success and order id
-            updateProduct(orderId);
+            // updateProduct(orderId);
             updateTransaction("success", orderId);
             res.status(200);
         } else if (
@@ -134,7 +136,7 @@ exports.notification = async (req, res) => {
         } else if (transactionStatus == "pending") {
             // TODO set transaction status on your database to 'pending' / waiting payment
             // and response with 200 OK
-            sendEmail("pending", orderId); //sendEmail with status pending and order id
+            // sendEmail("pending", orderId); //sendEmail with status pending and order id
             updateTransaction("pending", orderId);
             res.status(200);
         }
@@ -142,6 +144,20 @@ exports.notification = async (req, res) => {
         console.log(error);
         res.status(500);
     }
+};
+
+// Create function for handle transaction update status here ...
+const updateTransaction = async (status, transactionId) => {
+    await transaction.update(
+        {
+            status,
+        },
+        {
+            where: {
+                id: transactionId,
+            },
+        }
+    );
 };
 
 exports.getTransaction = async (req, res) => {
