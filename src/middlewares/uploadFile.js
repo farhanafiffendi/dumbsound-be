@@ -1,11 +1,10 @@
 const multer = require('multer')
 
-exports.uploadFile = (attache, thumbnail) => {
+exports.uploadFile = () => {
     // init multer diskstorage
     // Menentukan destination file upload
     // Menentukan nama file (rename agar tidak ada file yang sama / ganda)
 
-    const fileName = ""
     const storage = multer.diskStorage({
         destination: function (req, file, cb) {
             cb(null, "uploads") //Lokasi penyimpanan file
@@ -17,22 +16,11 @@ exports.uploadFile = (attache, thumbnail) => {
 
     // function untuk filter file berdasarkan type
     const fileFilter = function (req, file, cb) {
-        if (file.fieldname === thumbnail) {
-            if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF|mp3)$/)) {
-                req.fileValidationError = {
-                    message: "Only image files are allowed!"
-                };
-                return cb(new Error("Only image files are allowed!"), false);
-            }
-        }
-
-        if (file.fieldname === attache) {
-            if (!file.originalname.match(/\.(mp3)$/)) {
-                req.fileValidationError = {
-                    message: "Only video files are allowed!"
-                };
-                return cb(new Error("Only video files are allowed!"), false);
-            }
+        if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF|mp3)$/)) {
+            req.fileValidationError = {
+                message: "Only image files are allowed!"
+            };
+            return cb(new Error("Only image files are allowed!"), false);
         }
         cb(null, true)
     }
@@ -49,11 +37,11 @@ exports.uploadFile = (attache, thumbnail) => {
         }
     }).fields([
         {
-            name: attache,
+            name: "attache",
             maxCount: 10
         },
         {
-            name: thumbnail,
+            name: "thumbnail",
             maxCount: 10
         }
     ]); //untuk menentukan jumlah file
