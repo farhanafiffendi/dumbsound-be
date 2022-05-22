@@ -17,6 +17,9 @@ module.exports = {
       status: {
         type: Sequelize.STRING
       },
+      price: {
+        type: Sequelize.STRING
+      },
       userId: {
         type: Sequelize.INTEGER,
         references: {
