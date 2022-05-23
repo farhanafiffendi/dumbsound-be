@@ -179,7 +179,7 @@ exports.getTransaction = async (req, res) => {
         res.send({
             status: 'success',
             message: 'User Successfully Get',
-            transactions,
+            transaction,
         })
     } catch (error) {
         console.log(error)

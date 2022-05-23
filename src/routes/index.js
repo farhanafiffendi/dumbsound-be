@@ -7,6 +7,7 @@ const { register, login, checkLogin } = require('../controllers/auth')
 const { getMusics, addMusics, updateMusic, getDetailMusic, deleteMusic } = require('../controllers/music')
 const { addArtist, updateArtist, getArtist, deleteArtist } = require('../controllers/artist')
 const { getTransaction, addTransaction, notification } = require('../controllers/transaction')
+const { getUsers, getUser, getUserTrans } = require('../controllers/user')
 
 // Middleware
 const { auth } = require('../middlewares/auth')
@@ -19,7 +20,7 @@ router.post('/login', login)
 router.get('/check', auth, checkLogin)
 
 //route music
-router.get('/musics', auth, getMusics)
+router.get('/musics', getMusics)
 router.patch('/music/:id', auth, uploadFile(), updateMusic)
 router.post('/music', auth, uploadFile(), addMusics)
 router.get('/music/:id', auth, getDetailMusic)
@@ -33,5 +34,11 @@ router.delete('/artist/:id', auth, deleteArtist)
 router.get('/transactions', auth, getTransaction)
 router.post('/transaction', auth, addTransaction)
 router.post("/notification", notification);
+
+router.get('/users', getUsers)
+
+router.get("/user/:id", getUser);
+
+router.get("/userTrans/:id", getUserTrans);
 
 module.exports = router
