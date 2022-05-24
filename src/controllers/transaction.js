@@ -9,12 +9,33 @@ const nodemailer = require("nodemailer");
 
 exports.addTransaction = async (req, res) => {
     try {
+        let d = new Date();
+        let months = "";
+
+        if (req.body.price === "20000") {
+            months = "1";
+        } else if (req.body.price === "250000") {
+            months = "6";
+        } else if (req.body.price === "500000") {
+            months = "12";
+        }
+
+        let mySqlTimestamp = new Date(
+            d.getFullYear(),
+            d.getMonth() + parseInt(months),
+            d.getDate(),
+            d.getHours(),
+            d.getMinutes(),
+            d.getSeconds(),
+            d.getMilliseconds()
+        ).toISOString().slice(0, 19).replace("T", " ");
+
         let data = req.body;
         data = {
             ...data,
             userId: req.user.id,
             status: "pending",
-            price: parseInt("20000")
+            dueDate: mySqlTimestamp,
         };
 
         const newData = await transaction.create(data);
@@ -179,7 +200,7 @@ exports.getTransaction = async (req, res) => {
         res.send({
             status: 'success',
             message: 'User Successfully Get',
-            transaction,
+            transactions,
         })
     } catch (error) {
         console.log(error)
