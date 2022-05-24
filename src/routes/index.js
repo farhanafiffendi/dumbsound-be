@@ -31,7 +31,7 @@ router.patch('/artist/:id', auth, updateArtist)
 router.get('/artists', auth, getArtist)
 router.delete('/artist/:id', auth, deleteArtist)
 
-router.get('/transactions', auth, getTransaction)
+router.get('/transactions', getTransaction)
 router.post('/transaction', auth, addTransaction)
 router.post("/notification", notification);
 
