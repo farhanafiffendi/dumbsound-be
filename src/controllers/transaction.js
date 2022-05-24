@@ -192,7 +192,7 @@ exports.getTransaction = async (req, res) => {
                 }
             },
             attributes: {
-                exclude: ['createdAt', 'updatedAt']
+                exclude: ['updatedAt']
             },
             order: [['id', 'DESC']],
         })
