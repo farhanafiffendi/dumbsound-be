@@ -20,7 +20,7 @@ router.post('/login', login)
 router.get('/check', auth, checkLogin)
 
 //route music
-router.get('/musics', auth, getMusics)
+router.get('/musics', getMusics)
 router.patch('/music/:id', auth, uploadFile(), updateMusic)
 router.post('/music', auth, uploadFile(), addMusics)
 router.get('/music/:id', auth, getDetailMusic)
