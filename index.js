@@ -23,6 +23,9 @@ const io = new Server(server, {
 // import socket function and call with parameter io
 require("./src/socket")(io);
 
+//nyalain corn
+// require("./src/cron/cronServer");
+
 const port = 5000;
 
 app.use(express.json());
