@@ -24,7 +24,7 @@ const io = new Server(server, {
 require("./src/socket")(io);
 
 //nyalain cron
-require("./src/cron/cronServer");
+// require("./src/cron/cronServer");
 
 const port = 5000;
 
