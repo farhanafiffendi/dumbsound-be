@@ -6,7 +6,7 @@ const router = express.Router()
 const { register, login, checkLogin } = require('../controllers/auth')
 const { getMusics, addMusics, updateMusic, getDetailMusic, deleteMusic } = require('../controllers/music')
 const { addArtist, updateArtist, getArtist, deleteArtist } = require('../controllers/artist')
-const { getTransaction, addTransaction, notification } = require('../controllers/transaction')
+const { getTransaction, addTransaction, deleteTrans, getTransactionAdmin, notification } = require('../controllers/transaction')
 const { getUsers, getUser, getUserTrans } = require('../controllers/user')
 
 // Middleware
@@ -32,7 +32,9 @@ router.get('/artists', auth, getArtist)
 router.delete('/artist/:id', auth, deleteArtist)
 
 router.get('/transactions', getTransaction)
+router.get('/transactionAdmin/:id', getTransactionAdmin)
 router.post('/transaction', auth, addTransaction)
+router.delete('/transaction/:id', auth, deleteTrans)
 router.post("/notification", notification);
 
 router.get('/users', getUsers)
@@ -40,6 +42,6 @@ router.get('/users', getUsers)
 
 router.get("/user/:id", getUser);
 
-router.get("/userTrans/:id", getUserTrans);
+router.get("/userTrans/:id", auth, getUserTrans);
 
 module.exports = router

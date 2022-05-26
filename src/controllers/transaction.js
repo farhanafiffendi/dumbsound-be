@@ -211,6 +211,37 @@ exports.getTransaction = async (req, res) => {
     }
 }
 
+exports.getTransactionAdmin = async (req, res) => {
+    try {
+        const trans = await transaction.findAll({
+            include: {
+                model: user,
+                as: 'user',
+                attributes: {
+                    exclude: ['createdAt', 'updatedAt', 'password', 'gender', 'address', 'status']
+                }
+            },
+            attributes: {
+                exclude: ['updatedAt']
+            },
+        })
+
+        res.send({
+            status: 'success',
+            message: 'User Successfully Get',
+            data: {
+                trans,
+            }
+        })
+    } catch (error) {
+        console.log(error)
+        res.status({
+            status: 'failed',
+            message: 'Server Error',
+        })
+    }
+}
+
 exports.deleteTrans = async (req, res) => {
     try {
         const { id } = req.params
