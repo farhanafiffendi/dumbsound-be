@@ -42,6 +42,6 @@ router.get('/users', getUsers)
 
 router.get("/user/:id", getUser);
 
-router.get("/userTrans/:id", auth, getUserTrans);
+router.get("/userTrans/:id", getUserTrans);
 
 module.exports = router
