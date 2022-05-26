@@ -43,6 +43,49 @@ exports.getMusics = async (req, res) => {
     }
 };
 
+exports.getMusicsHome = async (req, res) => {
+    try {
+        let data = await music.findAll({
+            include: [
+                {
+                    model: art,
+                    as: 'art',
+                    attributes: {
+                        exclude: ['createdAt', 'updatedAt'],
+                    },
+                }
+            ],
+            attributes: {
+                exclude: ['createdAt', 'updatedAt']
+            },
+        })
+
+        data = JSON.parse(JSON.stringify(data))
+
+        data = data.map((item) => {
+            return {
+                ...item,
+                thumbnail: process.env.FILE_PATH + item.thumbnail,
+                attache: process.env.FILE_PATH + item.attache
+            }
+        });
+
+
+        res.send({
+            status: "success",
+            messsage: "successfully get music",
+            data,
+
+        })
+    } catch (error) {
+        console.log(error);
+        res.status({
+            status: 'failed',
+            message: 'Server Error'
+        })
+    }
+};
+
 exports.addMusics = async (req, res) => {
     try {
         const data = req.body;

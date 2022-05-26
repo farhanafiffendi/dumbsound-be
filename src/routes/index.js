@@ -4,7 +4,7 @@ const router = express.Router()
 
 // Controller
 const { register, login, checkLogin } = require('../controllers/auth')
-const { getMusics, addMusics, updateMusic, getDetailMusic, deleteMusic } = require('../controllers/music')
+const { getMusics, addMusics, updateMusic, getDetailMusic, deleteMusic, getMusicsHome } = require('../controllers/music')
 const { addArtist, updateArtist, getArtist, deleteArtist } = require('../controllers/artist')
 const { getTransaction, addTransaction, deleteTrans, getTransactionAdmin, notification } = require('../controllers/transaction')
 const { getUsers, getUser, getUserTrans } = require('../controllers/user')
@@ -20,7 +20,8 @@ router.post('/login', login)
 router.get('/check', auth, checkLogin)
 
 //route music
-router.get('/musics', getMusics)
+router.get('/musics', auth, getMusics)
+router.get('/musics-home', getMusicsHome)
 router.patch('/music/:id', auth, uploadFile(), updateMusic)
 router.post('/music', auth, uploadFile(), addMusics)
 router.get('/music/:id', auth, getDetailMusic)
@@ -42,6 +43,6 @@ router.get('/users', getUsers)
 
 router.get("/user/:id", getUser);
 
-router.get("/userTrans/:id", getUserTrans);
+router.get("/userTrans/:id", auth, getUserTrans);
 
 module.exports = router
