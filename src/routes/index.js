@@ -25,7 +25,7 @@ router.get('/musics-home', getMusicsHome)
 router.patch('/music/:id', auth, uploadFile(), updateMusic)
 router.post('/music', auth, uploadFile(), addMusics)
 router.get('/music/:id', auth, getDetailMusic)
-router.delete('/music/:id', auth, deleteMusic)
+router.delete('/music/:id', deleteMusic)
 
 router.post('/artist', auth, addArtist)
 router.patch('/artist/:id', auth, updateArtist)
