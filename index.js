@@ -28,6 +28,13 @@ require("./src/cron/cronServer");
 
 const port = process.env.PORT || 5000;
 
+app.get('/', function (req, res) {
+    res.send({
+        message: 'Hello World',
+        CLIENT_URL: process.env.CLIENT_URL,
+    });
+});
+
 app.use(express.json());
 app.use(cors());
 
