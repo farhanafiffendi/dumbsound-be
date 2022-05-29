@@ -4,7 +4,7 @@ exports.getUsers = async (req, res) => {
     try {
         const users = await user.findAll({
             attributes: {
-                exclude: ['createdAt', 'updatedAt', 'password']
+                exclude: ['updatedAt', 'password']
             }
         })
 
@@ -31,7 +31,7 @@ exports.getUser = async (req, res) => {
 
         const userData = await user.findOne({
             attributes: {
-                exclude: ['createdAt', 'updatedAt', 'password']
+                exclude: ['updatedAt', 'password']
             },
             where: {
                 id
@@ -73,7 +73,7 @@ exports.getUserTrans = async (req, res) => {
             attributes: {
                 exclude: ['updatedAt', 'password']
             },
-            // order: [[transaction, 'createdAt', 'DESC']]
+            order: [[transaction, 'createdAt', 'DESC']]
         })
 
         res.send({
