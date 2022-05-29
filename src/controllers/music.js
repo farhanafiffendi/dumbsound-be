@@ -97,8 +97,8 @@ exports.addMusics = async (req, res) => {
         });
 
         const data = req.body;
-        const attache = result.public_id,
-        const thumbnail = result.public_id,
+        const attache = result.public_id;
+        const thumbnail = result.public_id;
 
         const uploadData = {
             ...data,
