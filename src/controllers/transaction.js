@@ -213,7 +213,10 @@ exports.getTransaction = async (req, res) => {
 
 exports.getTransactionAdmin = async (req, res) => {
     try {
-        const trans = await transaction.findAll({
+        const userId = req.user.id;
+
+        const trans = await transaction.findOne({
+            where: { userId },
             include: {
                 model: user,
                 as: 'user',
@@ -224,6 +227,7 @@ exports.getTransactionAdmin = async (req, res) => {
             attributes: {
                 exclude: ['updatedAt']
             },
+            order: [['createdAt', 'DESC']]
         })
 
         res.send({

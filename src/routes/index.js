@@ -33,7 +33,7 @@ router.get('/artists', auth, getArtist)
 router.delete('/artist/:id', auth, deleteArtist)
 
 router.get('/transactions', getTransaction)
-router.get('/transactionAdmin/:id', getTransactionAdmin)
+router.get('/transactionAdmin', auth, getTransactionAdmin)
 router.post('/transaction', auth, addTransaction)
 router.delete('/transaction/:id', auth, deleteTrans)
 router.post("/notification", notification);
@@ -43,6 +43,6 @@ router.get('/users', getUsers)
 
 router.get("/user/:id", getUser);
 
-router.get("/userTrans/:id", auth, getUserTrans);
+router.get("/userTrans", auth, getUserTrans);
 
 module.exports = router

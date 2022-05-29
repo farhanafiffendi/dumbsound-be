@@ -57,7 +57,7 @@ exports.getUser = async (req, res) => {
 exports.getUserTrans = async (req, res) => {
     try {
 
-        const { id } = req.params
+        const id = req.user.id
 
         const usertrans = await user.findOne({
             where: {
