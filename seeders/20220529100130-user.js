@@ -24,7 +24,7 @@ module.exports = {
           status: 'admin',
           address: 'Medan Sumut',
           createdAt: '2022-05-25 17:13:03',
-          updateAt: '2022-05-25 17:13:03',
+          updateAt: '2022-05-25 17:13:04',
         },
       ],
       {}
