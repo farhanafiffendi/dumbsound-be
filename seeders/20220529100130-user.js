@@ -22,7 +22,8 @@ module.exports = {
           gender: 'Male',
           phone: '0822725243277',
           status: 'admin',
-          address: 'Medan Sumut'
+          address: 'Medan Sumut',
+          createdAt: '2022-05-25 17:13:03',
         },
       ],
       {}
