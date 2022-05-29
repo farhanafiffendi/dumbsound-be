@@ -20,6 +20,7 @@ module.exports = {
             '$2b$10$tU3tl4wkIZxYdXCPmvhP2uKAUXfa8gutnfIDHwYrSLNjNwwePAfvS', //123456
           fullname: 'admin',
           status: 'admin',
+          createdAt: ''
         },
       ],
       {}
