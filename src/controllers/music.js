@@ -1,7 +1,5 @@
 const { music, art } = require('../../models');
 
-const cloudinary = require('../utils/cloudinary');
-
 exports.getMusics = async (req, res) => {
     try {
         let data = await music.findAll({
@@ -90,16 +88,9 @@ exports.getMusicsHome = async (req, res) => {
 
 exports.addMusics = async (req, res) => {
     try {
-        // Handle uploader to cloudinary here ...
-        const result = await cloudinary.uploader.upload(req.file.path, {
-            folder: 'dumbmerch',
-            use_filename: true,
-            unique_filename: false,
-        });
-
         const data = req.body;
         const attache = req.files.attache[0].filename
-        const thumbnail = result.public_id;
+        const thumbnail = req.files.thumbnail[0].filename
 
         const uploadData = {
             ...data,
