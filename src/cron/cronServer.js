@@ -1,7 +1,7 @@
 const cron = require("node-cron");
 const { transaction } = require("../../models");
 
-cron.schedule("1 * * * * *", () => {
+cron.schedule("* 1 * * * *", () => {
     getTransaction();
 });
 
