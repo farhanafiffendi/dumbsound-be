@@ -71,7 +71,7 @@ exports.getUserTrans = async (req, res) => {
                 },
             },
             attributes: {
-                exclude: ['createdAt', 'updatedAt', 'password']
+                exclude: ['updatedAt', 'password']
             },
             order: [[transaction, 'createdAt', 'DESC']]
         })
