@@ -188,7 +188,7 @@ exports.getTransaction = async (req, res) => {
                 model: user,
                 as: 'user',
                 attributes: {
-                    exclude: ['createdAt', 'updatedAt', 'password', 'gender', 'address', 'status']
+                    exclude: ['updatedAt', 'password', 'gender', 'address', 'status']
                 }
             },
             attributes: {
@@ -221,7 +221,7 @@ exports.getTransactionAdmin = async (req, res) => {
                 model: user,
                 as: 'user',
                 attributes: {
-                    exclude: ['createdAt', 'updatedAt', 'password', 'gender', 'address', 'status']
+                    exclude: ['updatedAt', 'password', 'gender', 'address', 'status']
                 }
             },
             attributes: {
