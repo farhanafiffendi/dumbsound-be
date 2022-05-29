@@ -18,7 +18,7 @@ module.exports = {
           email: 'admin@gmail.com',
           password:
             '$2b$10$tU3tl4wkIZxYdXCPmvhP2uKAUXfa8gutnfIDHwYrSLNjNwwePAfvS', //123456
-          name: 'admin',
+          fullname: 'admin',
           status: 'admin',
         },
       ],
