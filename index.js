@@ -26,7 +26,7 @@ require("./src/socket")(io);
 //nyalain cron
 require("./src/cron/cronServer");
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cors());
