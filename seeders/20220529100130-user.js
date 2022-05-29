@@ -19,7 +19,10 @@ module.exports = {
           password:
             '$2b$10$tU3tl4wkIZxYdXCPmvhP2uKAUXfa8gutnfIDHwYrSLNjNwwePAfvS', //123456
           fullname: 'admin',
+          gender: 'Male',
+          phone: '0822725243277',
           status: 'admin',
+          address: 'Medan Sumut'
         },
       ],
       {}
