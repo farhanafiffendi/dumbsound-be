@@ -23,8 +23,8 @@ module.exports = {
           status: 'admin',
           phone: '0822725243277',
           address: 'Medan Sumut',
-          // createdAt: '2022-05-25 17:13:03',
-          // updatedAt: '2022-05-25 17:13:03',
+          createdAt: '2022-05-25 17:13:03',
+          updatedAt: '2022-05-25 17:13:03',
         },
       ],
       {}
