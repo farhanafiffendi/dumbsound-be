@@ -122,7 +122,7 @@ exports.addMusics = async (req, res) => {
             data: {
                 ...dataMusic,
                 thumbnail: process.env.FILE_PATH + dataMusic.thumbnail,
-                attache: process.env.FILE_PATH + dataMusic.attache
+                attache: process.env.FILE_PATH_SONG + dataMusic.attache
             }
         })
 
@@ -222,7 +222,7 @@ exports.getDetailMusic = async (req, res) => {
         data = {
             ...data,
             thumbnail: process.env.FILE_PATH + data.thumbnail,
-            attache: process.env.FILE_PATH + data.attache
+            attache: process.env.FILE_PATH_SONG + data.attache
         }
 
         res.send({
