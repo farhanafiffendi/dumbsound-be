@@ -25,7 +25,7 @@ exports.getMusics = async (req, res) => {
             return {
                 ...item,
                 thumbnail: process.env.FILE_PATH + item.thumbnail,
-                attache: process.env.FILE_PATH + item.attache
+                attache: process.env.FILE_PATH_SONG + item.attache
             }
         });
 
@@ -68,7 +68,7 @@ exports.getMusicsHome = async (req, res) => {
             return {
                 ...item,
                 thumbnail: process.env.FILE_PATH + item.thumbnail,
-                attache: process.env.FILE_PATH + item.attache
+                attache: process.env.FILE_PATH_SONG + item.attache
             }
         });
 
