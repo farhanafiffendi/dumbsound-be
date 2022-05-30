@@ -94,7 +94,7 @@ exports.addMusics = async (req, res) => {
             folder: 'dumbmerch',
             use_filename: true,
             unique_filename: false,
-            resource_type: "video",
+            resource_type: "raw",
         });
 
         const resultImage = await cloudinary.uploader.upload(req.files.thumbnail[0].path, {
